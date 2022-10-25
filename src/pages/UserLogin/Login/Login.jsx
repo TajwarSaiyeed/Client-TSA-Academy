@@ -1,8 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, Navigate } from "react-router-dom";
 import userPlaceHolder from "../../../assets/userPlaceHolder.png";
+import { AuthProvider } from "../../../contexts/AuthContext";
 
 const Login = () => {
+  const { user, loader, setLoader } = useContext(AuthProvider);
+
+  if (loader) {
+    return (
+      <progress className="progress absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-96 h-10"></progress>
+    );
+  }
+
+  if (user) {
+    return <Navigate to="/"></Navigate>;
+  }
+
+  setLoader(false);
+
   return (
     <div
       className="flex justify-center items-center min-h-screen"

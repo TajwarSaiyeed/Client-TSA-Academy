@@ -125,7 +125,7 @@ const Navbar = () => {
                           className="h-8 w-8 rounded-full"
                           src={
                             user?.photoURL
-                              ? `${user.photoURL}`
+                              ? user.photoURL
                               : "https://flowbite.com/docs/images/people/profile-picture-5.jpg"
                           }
                           alt=""
@@ -149,7 +149,7 @@ const Navbar = () => {
                         {({ active }) =>
                           user && user?.uid ? (
                             <Link
-                              to="/profile"
+                              to={`/profile/${user.uid}`}
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"

@@ -3,6 +3,7 @@ import CourseCardDetails from "../../components/CourseCardDetails/CourseCardDeta
 import Main from "../../layout/Main";
 import Courses from "../../pages/Courses/Courses";
 import Home from "../../pages/Home/Home";
+import Profile from "../../pages/Profile/Profile";
 import Login from "../../pages/UserLogin/Login/Login";
 import Register from "../../pages/UserLogin/Register/Register";
 
@@ -24,6 +25,10 @@ export const routes = createBrowserRouter([
         element: <CourseCardDetails />,
         loader: ({ params }) =>
           fetch(`https://tsa-academy-server.vercel.app/course/${params.id}`),
+      },
+      {
+        path: "/profile/:id",
+        element: <Profile />,
       },
     ],
   },
