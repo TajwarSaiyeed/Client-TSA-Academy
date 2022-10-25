@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import userPlaceHolder from "../../../assets/userPlaceHolder.png";
 
 const Login = () => {
@@ -7,7 +8,7 @@ const Login = () => {
       className="flex justify-center items-center min-h-screen"
       style={{ height: "110vh" }}
     >
-      <form className="flex flex-col justify-center items-center p-20 gap-3 rounded-lg relative shadow-lg bg-teal-500">
+      <form className="flex flex-col justify-center items-center p-20 gap-3 rounded-lg relative shadow-lg bg-blue-200">
         <div className="avatar placeholder absolute -top-20">
           <div className=" bg-neutral-content text-neutral-focus rounded-full shadow-lg w-32">
             <img src={userPlaceHolder} alt="" />
@@ -26,9 +27,15 @@ const Login = () => {
           placeholder="Enter A Password"
           className="input w-full max-w-xs"
         />
-        <button type="submit" className="btn btn-outline btn-accent text-xl">
+        <button type="submit" className="btn btn-outline btn-info text-xl">
           Sign in
         </button>
+        <p className="text-red-500 drop-shadow-md text-xl">
+          Don't Have An Account{" "}
+          <Link className="link link-primary" to="/register">
+            Register
+          </Link>
+        </p>
       </form>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import userPlaceHolder from "../../../assets/userPlaceHolder.png";
 
 const Register = () => {
@@ -39,6 +40,12 @@ const Register = () => {
         <button type="submit" className="btn btn-outline btn-info text-xl">
           Register
         </button>
+        <p className="text-blue-500 drop-shadow-md text-xl">
+          Already Have An Account{" "}
+          <Link className="link link-secondary" to="/login">
+            Login
+          </Link>
+        </p>
       </form>
     </div>
   );
