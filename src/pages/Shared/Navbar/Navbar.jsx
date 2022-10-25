@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
+  { name: "Home", href: "/", current: true },
   { name: "Blog", href: "/blog", current: false },
   { name: "Login", href: "/login", current: false },
   { name: "Register", href: "/register", current: false },
