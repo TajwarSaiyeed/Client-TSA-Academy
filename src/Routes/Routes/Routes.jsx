@@ -23,8 +23,11 @@ export const routes = createBrowserRouter([
       {
         path: "/course/:id",
         element: <CourseCardDetails />,
-        loader: ({ params }) =>
-          fetch(`https://tsa-academy-server.vercel.app/course/${params.id}`),
+        loader: ({ params }) => {
+          return fetch(
+            `https://tsa-academy-server.vercel.app/course/${params.id}`
+          );
+        },
       },
       {
         path: "/profile/:id",

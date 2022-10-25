@@ -1,13 +1,10 @@
-import React, { createRef, useContext } from "react";
+import React, { createRef } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Pdf from "react-to-pdf";
-import { AuthProvider } from "../../contexts/AuthContext";
 
 const ref = createRef();
 
 const CourseCardDetails = () => {
-  const { user } = useContext(AuthProvider);
-
   const courseDetails = useLoaderData();
   const { name, desc, img } = courseDetails;
   return (
@@ -38,7 +35,6 @@ const CourseCardDetails = () => {
           </div>
         </div>
       </div>
-      {user}
       <Link to="/courses">
         <button className="btn btn-primary">Back to Courses</button>
       </Link>
