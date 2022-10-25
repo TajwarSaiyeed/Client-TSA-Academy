@@ -1,17 +1,26 @@
 import React from "react";
+import { useLoaderData } from "react-router-dom";
 import CourceCard from "../../components/CourceCard/CourceCard";
 
 const Cources = () => {
-  const cources = [1, 2, 3, 4, 5, 6];
+  const courses = useLoaderData();
   return (
-    <>
-      <h1>Cources</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5">
-        {cources.map((c) => (
-          <CourceCard key={c} />
+    <div className="grid" style={{ gridTemplateColumns: "1fr 3fr" }}>
+      <div>
+        <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+          {courses.map((course) => (
+            <li key={course.id}>
+              <a href="/">{course.name}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="grid grid-cols-3 p-3 gap-3">
+        {courses.map((course) => (
+          <CourceCard key={courses.id} course={course} />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
