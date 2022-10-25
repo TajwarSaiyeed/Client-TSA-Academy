@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import CourseCardDetails from "../../components/CourseCardDetails/CourseCardDetails";
 import Main from "../../layout/Main";
-import Cources from "../../pages/Cources/Cources";
+import Courses from "../../pages/Courses/Courses";
 import Home from "../../pages/Home/Home";
 import Login from "../../pages/UserLogin/Login/Login";
 import Register from "../../pages/UserLogin/Register/Register";
@@ -15,8 +15,8 @@ export const routes = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
       {
-        path: "/cources",
-        element: <Cources />,
+        path: "/courses",
+        element: <Courses />,
         loader: () => fetch("https://tsa-academy-server.vercel.app/courses"),
       },
       {

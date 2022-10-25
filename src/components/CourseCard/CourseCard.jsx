@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CourceCard = ({ course }) => {
-  const { id, name, img, desc } = course;
+const CourseCard = ({ course }) => {
+  const { _id, name, img, desc } = course;
   return (
     <div className="card card-compact w-72 bg-base-100 shadow-xl">
       <figure>
@@ -14,7 +14,7 @@ const CourceCard = ({ course }) => {
           {desc.length > 100 ? (
             <>
               {desc.slice(0, 150) + "..."}
-              <Link to={`/course/${id}`}>more</Link>
+              <Link to={`/course/${_id}`}>more</Link>
             </>
           ) : (
             desc
@@ -28,4 +28,4 @@ const CourceCard = ({ course }) => {
   );
 };
 
-export default CourceCard;
+export default CourseCard;

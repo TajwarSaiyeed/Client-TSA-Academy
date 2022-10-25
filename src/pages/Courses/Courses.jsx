@@ -1,8 +1,8 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
-import CourceCard from "../../components/CourceCard/CourceCard";
+import CourseCard from "../../components/CourseCard/CourseCard";
 
-const Cources = () => {
+const Courses = () => {
   const courses = useLoaderData();
   return (
     <div className="grid" style={{ gridTemplateColumns: "1fr 3fr" }}>
@@ -17,11 +17,11 @@ const Cources = () => {
       </div>
       <div className="grid grid-cols-3 p-3 gap-3">
         {courses.map((course) => (
-          <CourceCard key={courses.id} course={course} />
+          <CourseCard key={courses.id} course={course} />
         ))}
       </div>
     </div>
   );
 };
 
-export default Cources;
+export default Courses;
