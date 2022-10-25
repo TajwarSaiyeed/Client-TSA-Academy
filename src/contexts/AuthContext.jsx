@@ -1,9 +1,40 @@
-import React, { createContext } from "react";
+/* eslint-disable no-unused-vars */
+import React, { createContext, useEffect, useState } from "react";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import { app } from "../firebase/firebase.config";
 
-const AuthProvider = createContext();
+const auth = getAuth(app);
+export const AuthProvider = createContext();
 
 const AuthContext = ({ children }) => {
-  const authInfo = {};
+  const [user, setUser] = useState(null);
+  const [loader, setLoader] = useState(true);
+
+  const googleLogin = (Provider) => {
+    return signInWithPopup(auth, Provider);
+  };
+
+  const logOut = () => {
+    return signOut(auth);
+  };
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoader(false);
+    });
+
+    return () => {
+      unsub();
+    };
+  }, []);
+
+  const authInfo = { googleLogin, logOut };
   return (
     <AuthProvider.Provider value={authInfo}>{children}</AuthProvider.Provider>
   );

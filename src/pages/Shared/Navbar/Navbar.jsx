@@ -1,9 +1,11 @@
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { HiXCircle } from "react-icons/hi";
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
+import { GoogleAuthProvider } from "firebase/auth";
+import { AuthProvider } from "../../../contexts/AuthContext";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -17,7 +19,17 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+const googleSignInAuthProvider = new GoogleAuthProvider();
+
 const Navbar = () => {
+  const { googleLogin } = useContext(AuthProvider);
+  const handleGoogleSignIn = () => {
+    googleLogin(googleSignInAuthProvider)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -136,6 +148,19 @@ const Navbar = () => {
                           >
                             Settings
                           </a>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <button
+                            onClick={handleGoogleSignIn}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block w-full text-left px-4 py-2 text-sm text-gray-700"
+                            )}
+                          >
+                            Google
+                          </button>
                         )}
                       </Menu.Item>
                       <Menu.Item>
