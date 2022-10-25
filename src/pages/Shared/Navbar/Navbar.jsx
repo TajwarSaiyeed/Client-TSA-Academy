@@ -1,7 +1,14 @@
 import { Fragment, useContext } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { HiXCircle } from "react-icons/hi";
-import { FaBars } from "react-icons/fa";
+import {
+  FaBars,
+  FaGithub,
+  FaGoogle,
+  FaRegistered,
+  FaSignInAlt,
+  FaUserAlt,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -10,8 +17,6 @@ import { AuthProvider } from "../../../contexts/AuthContext";
 const navigation = [
   { name: "Home", href: "/", current: true },
   { name: "Blog", href: "/blog", current: false },
-  { name: "Login", href: "/login", current: false },
-  { name: "Register", href: "/register", current: false },
   { name: "Courses", href: "/courses", current: false },
 ];
 
@@ -22,13 +27,21 @@ function classNames(...classes) {
 const googleSignInAuthProvider = new GoogleAuthProvider();
 
 const Navbar = () => {
-  const { googleLogin } = useContext(AuthProvider);
+  const { googleLogin, logOut, user } = useContext(AuthProvider);
+  // console.log(user);
   const handleGoogleSignIn = () => {
     googleLogin(googleSignInAuthProvider)
       .then((result) => {
         console.log(result.user);
       })
       .catch((err) => console.log(err));
+  };
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {
+        console.log("signout successfull");
+      })
+      .catch((err) => console.log(err.messages));
   };
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -107,11 +120,19 @@ const Navbar = () => {
                   <div>
                     <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
-                      />
+                      {user?.uid ? (
+                        <img
+                          className="h-8 w-8 rounded-full"
+                          src={
+                            user?.photoURL
+                              ? `${user.photoURL}`
+                              : "https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                          }
+                          alt=""
+                        />
+                      ) : (
+                        <FaUserAlt className="text-white w-8 h-8 p-2" />
+                      )}
                     </Menu.Button>
                   </div>
                   <Transition
@@ -125,57 +146,104 @@ const Navbar = () => {
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
-                        {({ active }) => (
-                          <Link
-                            to="/profile"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Your Profile
-                          </Link>
-                        )}
+                        {({ active }) =>
+                          user && user?.uid ? (
+                            <Link
+                              to="/profile"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Your Profile
+                            </Link>
+                          ) : (
+                            <Link
+                              to="/login"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "flex gap-2 items-center px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              <FaSignInAlt className="text-white bg-blue-500 p-1 rounded-full w-6 h-6" />{" "}
+                              Login
+                            </Link>
+                          )
+                        }
                       </Menu.Item>
                       <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="/"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
-                          >
-                            Settings
-                          </a>
-                        )}
+                        {({ active }) =>
+                          user && user?.uid ? (
+                            <Link
+                              to="/settings"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              Settings
+                            </Link>
+                          ) : (
+                            <Link
+                              to="/register"
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "flex gap-2 items-center px-4 py-2 text-sm text-gray-700"
+                              )}
+                            >
+                              <FaRegistered className="text-white bg-blue-500 p-1 rounded-full w-6 h-6" />{" "}
+                              Register
+                            </Link>
+                          )
+                        }
                       </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <button
-                            onClick={handleGoogleSignIn}
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block w-full text-left px-4 py-2 text-sm text-gray-700"
+                      {!user && !user?.uid && (
+                        <>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                onClick={handleGoogleSignIn}
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "flex gap-2 w-full text-left px-4 py-2 text-sm text-gray-700 items-center"
+                                )}
+                              >
+                                <FaGithub className="text-gray-400 bg-black p-1 rounded-full w-6 h-6" />{" "}
+                                Github
+                              </button>
                             )}
-                          >
-                            Google
-                          </button>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="/"
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
+                          </Menu.Item>
+                          <Menu.Item>
+                            {({ active }) => (
+                              <button
+                                onClick={handleGoogleSignIn}
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "flex gap-2 w-full text-left px-4 py-2 text-sm text-gray-700 items-center"
+                                )}
+                              >
+                                <FaGoogle className="text-white bg-blue-500 p-1 rounded-full w-6 h-6" />{" "}
+                                Google
+                              </button>
                             )}
-                          >
-                            Sign out
-                          </a>
-                        )}
-                      </Menu.Item>
+                          </Menu.Item>
+                        </>
+                      )}
+                      {user && user?.uid && (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <button
+                              onClick={handleSignOut}
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 w-full text-left text-sm text-gray-700"
+                              )}
+                            >
+                              Sign out
+                            </button>
+                          )}
+                        </Menu.Item>
+                      )}
                     </Menu.Items>
                   </Transition>
                 </Menu>
