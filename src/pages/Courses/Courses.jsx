@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import CourseCard from "../../components/CourseCard/CourseCard";
 
 const Courses = () => {
@@ -10,7 +10,7 @@ const Courses = () => {
         <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
           {courses.map((course) => (
             <li key={course.id}>
-              <a href="/">{course.name}</a>
+              <Link to={`/course/${course._id}`}>{course.name}</Link>
             </li>
           ))}
         </ul>

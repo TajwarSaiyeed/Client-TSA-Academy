@@ -9,12 +9,14 @@ const CourseCard = ({ course }) => {
         <img className="" src={img} alt="Shoes" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{name}</h2>
-        <p>
+        <h2 className="card-title uppercase font-bold">{name}</h2>
+        <p className="text-justify">
           {desc.length > 100 ? (
             <>
               {desc.slice(0, 150) + "..."}
-              <Link to={`/course/${_id}`}>more</Link>
+              <Link to={`/course/${_id}`} className="link link-primary">
+                more
+              </Link>
             </>
           ) : (
             desc
