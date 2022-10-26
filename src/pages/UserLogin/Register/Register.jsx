@@ -4,8 +4,13 @@ import userPlaceHolder from "../../../assets/userPlaceHolder.png";
 import { AuthProvider } from "../../../contexts/AuthContext";
 
 const Register = () => {
-  const { user, loader, registerWithEmailPassword, updateNamePhoto } =
-    useContext(AuthProvider);
+  const {
+    user,
+    loader,
+    setLoader,
+    registerWithEmailPassword,
+    updateNamePhoto,
+  } = useContext(AuthProvider);
 
   const handleRegisterUser = (e) => {
     e.preventDefault();
@@ -17,7 +22,7 @@ const Register = () => {
 
     registerWithEmailPassword(email, password)
       .then((result) => {
-        const profile = { displayName: userName, PhotoURL: userPhoto };
+        const profile = { displayName: userName, photoURL: userPhoto };
 
         updateNamePhoto(profile)
           .then(() => {
@@ -26,7 +31,10 @@ const Register = () => {
           .catch((err) => console.log(err.message));
         console.log(result.user);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => console.log(err.message))
+      .finally(() => {
+        setLoader(false);
+      });
   };
 
   if (loader) {
