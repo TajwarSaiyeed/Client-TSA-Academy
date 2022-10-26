@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import CourseCardDetails from "../../components/CourseCardDetails/CourseCardDetails";
 import Main from "../../layout/Main";
+import Blog from "../../pages/Blog/Blog";
 import Courses from "../../pages/Courses/Courses";
 import Home from "../../pages/Home/Home";
+import PageNotFound from "../../pages/PageNotFound/PageNotFound";
 import Profile from "../../pages/Profile/Profile";
 import Login from "../../pages/UserLogin/Login/Login";
 import Register from "../../pages/UserLogin/Register/Register";
@@ -15,6 +17,7 @@ export const routes = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/login", element: <Login /> },
       { path: "/register", element: <Register /> },
+      { path: "/blog", element: <Blog /> },
       {
         path: "/courses",
         element: <Courses />,
@@ -36,5 +39,5 @@ export const routes = createBrowserRouter([
     ],
   },
 
-  { path: "*", element: <div>404</div> },
+  { path: "*", element: <PageNotFound /> },
 ]);
