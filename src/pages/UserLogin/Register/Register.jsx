@@ -4,7 +4,30 @@ import userPlaceHolder from "../../../assets/userPlaceHolder.png";
 import { AuthProvider } from "../../../contexts/AuthContext";
 
 const Register = () => {
-  const { user, loader, setLoader } = useContext(AuthProvider);
+  const { user, loader, registerWithEmailPassword, updateNamePhoto } =
+    useContext(AuthProvider);
+
+  const handleRegisterUser = (e) => {
+    e.preventDefault();
+    const from = e.target;
+    const userName = from.userName.value;
+    const userPhoto = from.userPhoto.value;
+    const email = from.email.value;
+    const password = from.password.value;
+
+    registerWithEmailPassword(email, password)
+      .then((result) => {
+        const profile = { displayName: userName, PhotoURL: userPhoto };
+
+        updateNamePhoto(profile)
+          .then(() => {
+            console.log("successfull photo and name");
+          })
+          .catch((err) => console.log(err.message));
+        console.log(result.user);
+      })
+      .catch((err) => console.log(err.message));
+  };
 
   if (loader) {
     return (
@@ -16,14 +39,15 @@ const Register = () => {
     return <Navigate to="/"></Navigate>;
   }
 
-  setLoader(false);
-
   return (
     <div
       className="flex justify-center items-center min-h-screen"
       style={{ height: "110vh" }}
     >
-      <form className="flex flex-col justify-center items-center  p-10 gap-3 rounded-lg relative shadow bg-blue-200 w-96 lg:w-2/4">
+      <form
+        onSubmit={handleRegisterUser}
+        className="flex flex-col justify-center items-center  p-10 gap-3 rounded-lg relative shadow bg-blue-200 w-96 lg:w-2/4"
+      >
         <div className="avatar placeholder absolute lg:-top-20 md:-top-20 -top-10">
           <div className="bg-neutral-focus text-neutral-content rounded-full lg:w-32 md:w-32 w-20">
             <img src={userPlaceHolder} alt="" />
@@ -36,21 +60,29 @@ const Register = () => {
           type="text"
           placeholder="Full Name"
           className="input w-full max-w-xs"
+          required
+          name="userName"
         />
         <input
           type="text"
           placeholder="Photo URL"
           className="input w-full max-w-xs"
+          name="userPhoto"
+          required
         />
         <input
           type="text"
           placeholder="Enter A Email"
           className="input w-full max-w-xs"
+          name="email"
+          required
         />
         <input
           type="password"
           placeholder="Enter A Password"
           className="input w-full max-w-xs"
+          name="password"
+          required
         />
         <button type="submit" className="btn btn-outline btn-info text-xl">
           Register

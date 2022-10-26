@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, { createContext, useEffect, useState } from "react";
 import {
+  createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 
@@ -23,6 +26,19 @@ const AuthContext = ({ children }) => {
   const githubLogin = (Provider) => {
     setLoader(true);
     return signInWithPopup(auth, Provider);
+  };
+
+  const registerWithEmailPassword = (email, password) => {
+    setLoader(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+  const updateNamePhoto = (profile) => {
+    return updateProfile(auth.currentUser, profile);
+  };
+
+  const logInWithEmailPassword = (email, password) => {
+    setLoader(true);
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   const logOut = () => {
@@ -47,6 +63,9 @@ const AuthContext = ({ children }) => {
     user,
     loader,
     setLoader,
+    registerWithEmailPassword,
+    updateNamePhoto,
+    logInWithEmailPassword,
   };
   return (
     <AuthProvider.Provider value={authInfo}>{children}</AuthProvider.Provider>
