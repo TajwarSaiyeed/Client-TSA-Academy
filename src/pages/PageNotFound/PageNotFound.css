@@ -1,0 +1,7 @@
+.bgImage {
+    background: url("../../assets/404.png");
+    background-size: cover;
+    background-position: center;
+    filter: blur(4px);
+    height: 100vh;
+}
