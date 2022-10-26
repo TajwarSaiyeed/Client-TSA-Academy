@@ -6,7 +6,7 @@ const ref = createRef();
 
 const CourseCardDetails = () => {
   const courseDetails = useLoaderData();
-  const { name, desc, img } = courseDetails;
+  const { _id, name, desc, img } = courseDetails;
   return (
     <div className="flex justify-center items-center flex-col rounded-lg min-h-screen gap-5">
       <div
@@ -19,7 +19,7 @@ const CourseCardDetails = () => {
             <h1 className="text-5xl font-bold">{name}</h1>
             <p className="py-6">{desc}</p>
             <div className="gap-2 flex">
-              <Link to="/checkout">
+              <Link to={`/checkout/${_id}`}>
                 <button className="btn btn-primary">Get Premium Access</button>
               </Link>
 
