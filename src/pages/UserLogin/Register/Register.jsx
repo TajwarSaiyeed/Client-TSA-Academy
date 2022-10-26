@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, Navigate } from "react-router-dom";
 import userPlaceHolder from "../../../assets/userPlaceHolder.png";
 import { AuthProvider } from "../../../contexts/AuthContext";
+import { toast } from "react-hot-toast";
 
 const Register = () => {
   const {
@@ -10,28 +11,33 @@ const Register = () => {
     setLoader,
     registerWithEmailPassword,
     updateNamePhoto,
+    verifyEmail,
   } = useContext(AuthProvider);
-
   const handleRegisterUser = (e) => {
     e.preventDefault();
-    const from = e.target;
-    const userName = from.userName.value;
-    const userPhoto = from.userPhoto.value;
-    const email = from.email.value;
-    const password = from.password.value;
+    const form = e.target;
+    const userName = form.userName.value;
+    const userPhoto = form.userPhoto.value;
+    const email = form.email.value;
+    const password = form.password.value;
 
     registerWithEmailPassword(email, password)
       .then((result) => {
+        console.log(result.user);
+        form.reset();
         const profile = { displayName: userName, photoURL: userPhoto };
 
         updateNamePhoto(profile)
           .then(() => {
             console.log("successfull photo and name");
           })
-          .catch((err) => console.log(err.message));
-        console.log(result.user);
+          .catch((err) => toast.error(err.message));
+        verifyEmail()
+          .then(() => {})
+          .catch((err) => toast.error(err));
+        toast.success("Please Check Your inbox or spam folder");
       })
-      .catch((err) => console.log(err.message))
+      .catch((err) => toast.error(err.message))
       .finally(() => {
         setLoader(false);
       });

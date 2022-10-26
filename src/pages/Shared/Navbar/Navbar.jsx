@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { AuthProvider } from "../../../contexts/AuthContext";
+import { toast } from "react-hot-toast";
 
 const navigation = [
   { name: "Home", href: "/", current: true },
@@ -35,21 +36,21 @@ const Navbar = () => {
       .then((result) => {
         console.log(result.user);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err));
   };
   const handleGithubLogin = () => {
     githubLogin(githubSignInAuthProvider)
       .then((result) => {
         console.log(result.user);
       })
-      .catch((err) => console.log(err.messages));
+      .catch((err) => toast.error(err.messages));
   };
   const handleSignOut = () => {
     logOut()
       .then(() => {
-        console.log("signout successfull");
+        toast.success("signout successfull");
       })
-      .catch((err) => console.log(err.messages));
+      .catch((err) => toast.error(err.messages));
   };
   return (
     <Disclosure as="nav" className="bg-gray-800">

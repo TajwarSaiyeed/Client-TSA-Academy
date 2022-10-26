@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import userPlaceHolder from "../../../assets/userPlaceHolder.png";
 import { AuthProvider } from "../../../contexts/AuthContext";
+import { toast } from "react-hot-toast";
 
 const Login = () => {
   const { user, loader, setLoader, logInWithEmailPassword } =
@@ -17,12 +18,18 @@ const Login = () => {
     const password = form.password.value;
 
     logInWithEmailPassword(email, password)
-      .then(() => {
+      .then((result) => {
+        // console.log(result.user);
+        const User = result.user;
         form.reset();
-        navigate(from, { replace: true });
+        if (User.emailVerified === true) {
+          navigate(from, { replace: true });
+        } else {
+          toast.error("Your Email Is Not Verified. Please Verify it.");
+        }
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       })
       .finally(() => {
         setLoader(false);

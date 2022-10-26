@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { toast } from "react-hot-toast";
 import { AuthProvider } from "../../contexts/AuthContext";
 
 const CheckOut = () => {
   const { user } = useContext(AuthProvider);
   const courseCheckOut = useLoaderData();
-  const { name, desc, img } = courseCheckOut;
+  const { name, desc, img, price } = courseCheckOut;
+  const enrollSuccess = () => {
+    toast.success(`Enroll SuccessFull for ${name} Course`);
+  };
   return (
     <div className="flex flex-col gap-3 justify-center items-center min-h-screen">
       <div className="card card-side w-3/4 bg-base-100 shadow-xl m-5">
@@ -55,10 +59,23 @@ const CheckOut = () => {
                 {user?.email}
               </dd>
             </div>
+            <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <dt className="text-sm font-medium text-gray-500">
+                Phone Number
+              </dt>
+              <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                <input
+                  type="number"
+                  name="phone"
+                  id=""
+                  className="input w-full max-w-xs"
+                />
+              </dd>
+            </div>
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
               <dt className="text-sm font-medium text-gray-500">Price</dt>
               <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                {"$ " + 120}
+                {"$" + price}
               </dd>
             </div>
             <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -66,6 +83,14 @@ const CheckOut = () => {
               <dd className="mt-1 text-sm  text-justify text-gray-900 sm:col-span-2 sm:mt-0">
                 {desc}
               </dd>
+            </div>
+            <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+              <button
+                className="btn btn-outline btn-success"
+                onClick={enrollSuccess}
+              >
+                Enroll Now
+              </button>
             </div>
           </dl>
         </div>

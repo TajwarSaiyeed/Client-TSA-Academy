@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -41,13 +42,19 @@ const AuthContext = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  const verifyEmail = () => {
+    return sendEmailVerification(auth.currentUser);
+  };
+
   const logOut = () => {
     return signOut(auth);
   };
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      if (currentUser === null || currentUser.emailVerified === true) {
+        setUser(currentUser);
+      }
       setLoader(false);
     });
 
@@ -66,6 +73,7 @@ const AuthContext = ({ children }) => {
     registerWithEmailPassword,
     updateNamePhoto,
     logInWithEmailPassword,
+    verifyEmail,
   };
   return (
     <AuthProvider.Provider value={authInfo}>{children}</AuthProvider.Provider>
