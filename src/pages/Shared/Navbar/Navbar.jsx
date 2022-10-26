@@ -11,7 +11,7 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { AuthProvider } from "../../../contexts/AuthContext";
 
 const navigation = [
@@ -25,9 +25,10 @@ function classNames(...classes) {
 }
 
 const googleSignInAuthProvider = new GoogleAuthProvider();
+const githubSignInAuthProvider = new GithubAuthProvider();
 
 const Navbar = () => {
-  const { googleLogin, logOut, user } = useContext(AuthProvider);
+  const { googleLogin, githubLogin, logOut, user } = useContext(AuthProvider);
   // console.log(user);
   const handleGoogleSignIn = () => {
     googleLogin(googleSignInAuthProvider)
@@ -35,6 +36,13 @@ const Navbar = () => {
         console.log(result.user);
       })
       .catch((err) => console.log(err));
+  };
+  const handleGithubLogin = () => {
+    githubLogin(githubSignInAuthProvider)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((err) => console.log(err.messages));
   };
   const handleSignOut = () => {
     logOut()
@@ -202,7 +210,7 @@ const Navbar = () => {
                           <Menu.Item>
                             {({ active }) => (
                               <button
-                                onClick={handleGoogleSignIn}
+                                onClick={handleGithubLogin}
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
                                   "flex gap-2 w-full text-left px-4 py-2 text-sm text-gray-700 items-center"
