@@ -19,7 +19,9 @@ const CourseCardDetails = () => {
             <h1 className="text-5xl font-bold">{name}</h1>
             <p className="py-6">{desc}</p>
             <div className="gap-2 flex">
-              <button className="btn btn-primary">Get Started</button>
+              <Link to="/checkout">
+                <button className="btn btn-primary">Get Premium Access</button>
+              </Link>
 
               <Pdf targetRef={ref} filename={`${name}.pdf`}>
                 {({ toPdf }) => (

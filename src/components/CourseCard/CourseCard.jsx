@@ -23,7 +23,9 @@ const CourseCard = ({ course }) => {
           )}
         </p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+          <Link to="/checkout">
+            <button className="btn btn-primary">Get Premium Access</button>
+          </Link>
         </div>
       </div>
     </div>

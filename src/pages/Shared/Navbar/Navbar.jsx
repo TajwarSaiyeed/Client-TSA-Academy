@@ -129,15 +129,20 @@ const Navbar = () => {
                     <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
                       {user?.uid ? (
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src={
-                            user?.photoURL
-                              ? user.photoURL
-                              : "https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                          }
-                          alt=""
-                        />
+                        <div
+                          className="tooltip tooltip-left"
+                          data-tip={`${user?.displayName}`}
+                        >
+                          <img
+                            className="h-8 w-8 rounded-full"
+                            src={
+                              user?.photoURL
+                                ? user.photoURL
+                                : "https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                            }
+                            alt=""
+                          />
+                        </div>
                       ) : (
                         <FaUserAlt className="text-white w-8 h-8 p-2" />
                       )}
