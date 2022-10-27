@@ -8,9 +8,9 @@ const Home = () => {
     <div className="relative">
       <div className="my-class min-h-screen"></div>
       <div className="absolute top-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 w-full">
-        <div className="flex items-center justify-between px-16">
-          <div className="w-2/4">
-            <h1 className="text-8xl font-bold text-white drop-shadow-lg flex my-5">
+        <div className="flex flex-col lg:flex-row md:flex-row items-center justify-between lg:px-14 sm:mx-12">
+          <div className="lg:w-2/4 w-full flex flex-col items-center justify-center sm:items-center md:items-start">
+            <h1 className="text-3xl lg:text-7xl md:text-6xl sm:text-4xl font-bold text-white drop-shadow-lg flex my-5">
               <span>TSA</span>
               <marquee loop="n" behavior="scroll" direction="up">
                 <span className="text-cyan-500 drop-shadow-lg">Academy</span>
@@ -25,8 +25,8 @@ const Home = () => {
               </Link>
             </div>
           </div>
-          <div className="w-2/4">
-            <div className="rounded-full bg-red-600 overflow-hidden mx-auto w-96 h-96">
+          <div className="lg:w-2/4 w-full flex justify-center items-center">
+            <div className="rounded-full overflow-hidden w-52 h-52 mt-10 lg:mt-0 lg:max-w-96 lg:max-h-96 md:w-80 md:h-80">
               <img
                 className="w-full h-full rounded-full"
                 src={rightside}
