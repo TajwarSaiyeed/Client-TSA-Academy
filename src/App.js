@@ -8,7 +8,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 function App() {
   const { darkMode } = useContext(AuthProvider);
   return (
-    <div className={darkMode ? "dark" : ""}>
+    <div className={darkMode ? `dark` : undefined}>
       <RouterProvider router={routes}></RouterProvider>
       <Toaster />
     </div>
