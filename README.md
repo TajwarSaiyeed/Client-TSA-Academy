@@ -12,7 +12,7 @@
 
 # How Many Pages In My Website?
 
-There are 7 pages in my website
+There are 7 pages in my website <br />
 Home <br />
 Blog <br />
 Cources <br />
@@ -23,7 +23,7 @@ Course details by clicking more btn <br />
 
 # How many authentication system I have added to my website
 
-3 Authentication System
+3 Authentication System <br />
 Login and Register <br />
 Github <br />
 Google <br />
