@@ -1,6 +1,6 @@
 # live site : <https://tsa-academy-abid.web.app/>
 
-# What dependencies i have added in my website
+# What dependencies i have added in my website?
 
  Firebase <br/>
  React Router Dom <br/>
@@ -9,6 +9,24 @@
  React Hot Toast <br />
  React To PDF <br />
 
+
+# How Many Pages In My Website?
+
+There are 7 pages in my website
+Home <br />
+Blog <br />
+Cources <br />
+Login <br />
+Register <br />
+Checkout <br />
+Course details by clicking more btn <br />
+
+# How many authentication system I have added to my website
+
+3 Authentication System
+Login and Register <br />
+Github <br />
+Google <br />
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
