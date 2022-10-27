@@ -23,13 +23,23 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     googleLogin(googleSignInAuthProvider)
-      .then((result) => {})
-      .catch((err) => toast.error(err.message));
+      .then((result) => {
+        toast.success("SignIn Successful");
+      })
+      .catch((err) => toast.error(err.message))
+      .finally(() => {
+        setLoader(false);
+      });
   };
   const handleGithubLogin = () => {
     githubLogin(githubSignInAuthProvider)
-      .then((result) => {})
-      .catch((err) => toast.error(err.message));
+      .then((result) => {
+        toast.success("SignIn Successful");
+      })
+      .catch((err) => toast.error(err.message))
+      .finally(() => {
+        setLoader(false);
+      });
   };
 
   const handleLogIn = (e) => {

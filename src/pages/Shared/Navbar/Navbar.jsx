@@ -30,18 +30,35 @@ const googleSignInAuthProvider = new GoogleAuthProvider();
 const githubSignInAuthProvider = new GithubAuthProvider();
 
 const Navbar = () => {
-  const { googleLogin, githubLogin, logOut, user, darkMode, setDarkMode } =
-    useContext(AuthProvider);
+  const {
+    googleLogin,
+    githubLogin,
+    logOut,
+    user,
+    darkMode,
+    setDarkMode,
+    setLoader,
+  } = useContext(AuthProvider);
   // console.log(user);
   const handleGoogleSignIn = () => {
     googleLogin(googleSignInAuthProvider)
-      .then((result) => {})
-      .catch((err) => toast.error(err.message));
+      .then((result) => {
+        toast.success("SignIn Successful");
+      })
+      .catch((err) => toast.error(err.message))
+      .finally(() => {
+        setLoader(false);
+      });
   };
   const handleGithubLogin = () => {
     githubLogin(githubSignInAuthProvider)
-      .then((result) => {})
-      .catch((err) => toast.error(err.message));
+      .then((result) => {
+        toast.success("SignIn Successful");
+      })
+      .catch((err) => toast.error(err.message))
+      .finally(() => {
+        setLoader(false);
+      });
   };
   const handleSignOut = () => {
     logOut()
