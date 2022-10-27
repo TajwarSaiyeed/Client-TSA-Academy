@@ -52,7 +52,11 @@ const AuthContext = ({ children }) => {
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser === null || currentUser.emailVerified === true) {
+      if (
+        currentUser === null ||
+        currentUser.email === null ||
+        currentUser.emailVerified === true
+      ) {
         setUser(currentUser);
       }
       setLoader(false);
