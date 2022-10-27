@@ -29,7 +29,8 @@ const googleSignInAuthProvider = new GoogleAuthProvider();
 const githubSignInAuthProvider = new GithubAuthProvider();
 
 const Navbar = () => {
-  const { googleLogin, githubLogin, logOut, user } = useContext(AuthProvider);
+  const { googleLogin, githubLogin, logOut, user, darkMode, setDarkMode } =
+    useContext(AuthProvider);
   // console.log(user);
   const handleGoogleSignIn = () => {
     googleLogin(googleSignInAuthProvider)
@@ -85,7 +86,10 @@ const Navbar = () => {
                 </div>
                 <div className="ml-3 mt-1">
                   <label className="swap swap-rotate text-white">
-                    <input type="checkbox" />
+                    <input
+                      type="checkbox"
+                      onClick={() => setDarkMode(!darkMode)}
+                    />
 
                     <svg
                       className="swap-on fill-current w-8 h-8"

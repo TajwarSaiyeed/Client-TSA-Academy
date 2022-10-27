@@ -16,6 +16,7 @@ const auth = getAuth(app);
 export const AuthProvider = createContext();
 
 const AuthContext = ({ children }) => {
+  const [darkMode, setDarkMode] = useState(false);
   const [user, setUser] = useState(null);
   const [loader, setLoader] = useState(true);
 
@@ -78,6 +79,8 @@ const AuthContext = ({ children }) => {
     updateNamePhoto,
     logInWithEmailPassword,
     verifyEmail,
+    darkMode,
+    setDarkMode,
   };
   return (
     <AuthProvider.Provider value={authInfo}>{children}</AuthProvider.Provider>
