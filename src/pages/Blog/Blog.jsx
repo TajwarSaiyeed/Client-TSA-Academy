@@ -37,7 +37,7 @@ const Blog = () => {
     },
   ];
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-3 p-5">
+    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-3 p-5 dark:bg-slate-600">
       {questions.map((question) => (
         <Question key={question.id} question={question} />
       ))}

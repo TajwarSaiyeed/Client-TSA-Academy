@@ -4,7 +4,7 @@ const Question = ({ question }) => {
   const { img, name, answer } = question;
   return (
     <div>
-      <div className="card lg:card-side h-full bg-base-100 shadow-xl">
+      <div className="card lg:card-side h-full bg-base-100 dark:bg-slate-900 dark:text-white shadow-xl">
         <figure>
           <img className="w-full h-full lg:w-80" src={img} alt="Album" />
         </figure>

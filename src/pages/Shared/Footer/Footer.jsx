@@ -5,7 +5,11 @@ const Footer = () => {
   return (
     <footer className="footer footer-center p-10 bg-blue-500 dark:bg-slate-500 text-primary-content">
       <div>
-        <img src={logo} className="inline-block drop-shadow-lg" alt="" />
+        <img
+          src={logo}
+          className="inline-block drop-shadow-lg dark:drop-shadow-sm"
+          alt=""
+        />
         <p className="font-bold">
           TSA ACADEMY. <br />
           Providing reliable tech since 1992
