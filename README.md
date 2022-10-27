@@ -1,3 +1,4 @@
+# Project : TSA-Academy
 # live site : <https://tsa-academy-abid.web.app/>
 
 # What dependencies i have added in my website?
@@ -8,6 +9,7 @@
  Daisy UI <br />
  React Hot Toast <br />
  React To PDF <br />
+ .env.local
 
 
 # How Many Pages In My Website?
