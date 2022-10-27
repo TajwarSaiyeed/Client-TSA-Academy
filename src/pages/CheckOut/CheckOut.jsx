@@ -12,7 +12,7 @@ const CheckOut = () => {
   };
   return (
     <div className="flex flex-col gap-3 justify-center items-center min-h-screen">
-      <div className="card card-side w-3/4 bg-base-100 shadow-xl m-5">
+      <div className="card card-side flex-col sm:flex-col md:flex-row lg:flex-row w-3/4 bg-base-100 shadow-xl m-5">
         <figure>
           <img className="w-80 p-4" src={img} alt="course" />
         </figure>
