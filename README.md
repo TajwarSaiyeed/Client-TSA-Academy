@@ -1,6 +1,13 @@
 # Project : TSA-Academy
 # live site : <https://tsa-academy-abid.web.app/>
 
+
+# live server link (HOME) : <https://tsa-academy-server.vercel.app/courses>
+# live server link (Courses): <https://tsa-academy-server.vercel.app/courses>
+
+# https://tsa-academy-server.vercel.app/course/${_id}
+# live server link (Course) : <https://tsa-academy-server.vercel.app/course/1>
+
 # What dependencies i have added in my website?
 
  Firebase <br/>
