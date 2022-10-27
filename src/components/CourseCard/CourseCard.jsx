@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const CourseCard = ({ course }) => {
   const { _id, name, img, desc } = course;
   return (
-    <div className="card card-compact w-72 bg-base-100 shadow-xl">
+    <div className="card card-compact w-96 sm:w-72 md:w-80 lg:w-56 bg-base-100 shadow-xl">
       <figure>
-        <img className="" src={img} alt="Shoes" />
+        <img className="w-full" src={img} alt="Shoes" />
       </figure>
       <div className="card-body">
         <h2 className="card-title uppercase font-bold">{name}</h2>
