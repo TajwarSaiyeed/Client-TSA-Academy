@@ -4,10 +4,10 @@
 
  Firebase <br/>
  React Router Dom <br/>
- React Icons
- Daisy UI
- React Hot Toast
- React To PDF
+ React Icons <br />
+ Daisy UI <br />
+ React Hot Toast <br />
+ React To PDF <br />
 
 # Getting Started with Create React App
 
