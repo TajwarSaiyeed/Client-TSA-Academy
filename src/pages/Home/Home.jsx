@@ -26,12 +26,8 @@ const Home = () => {
             </div>
           </div>
           <div className="lg:w-2/4 w-full flex justify-center items-center">
-            <div className="rounded-full overflow-hidden w-52 h-52 mt-10 lg:mt-0 lg:max-w-96 lg:max-h-96 md:w-80 md:h-80">
-              <img
-                className="w-full h-full rounded-full"
-                src={rightside}
-                alt=""
-              />
+            <div className="rounded-full overflow-hidden w-64 h-64 mt-10 lg:min-w-96 lg:w-96 lg:h-96 lg:min-h-96 md:w-80 md:h-80">
+              <img className="w-full h-full" src={rightside} alt="" />
             </div>
           </div>
         </div>
