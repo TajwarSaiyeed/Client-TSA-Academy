@@ -10,7 +10,7 @@ const Blog = () => {
     {
       id: 1,
       img: cors,
-      name: "What is Cors?",
+      name: "What is CORS?",
       answer:
         "CORS is shorthand for Cross-Origin Resource Sharing. It is a mechanism to allow or restrict requested resources on a web server depend on where the HTTP request was initiated. This policy is used to secure a certain web server from access by other website or domain.",
     },
@@ -37,7 +37,7 @@ const Blog = () => {
     },
   ];
   return (
-    <div className="grid grid-cols-1 gap-3 p-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-3 p-5">
       {questions.map((question) => (
         <Question key={question.id} question={question} />
       ))}
