@@ -35,24 +35,20 @@ const Navbar = () => {
   // console.log(user);
   const handleGoogleSignIn = () => {
     googleLogin(googleSignInAuthProvider)
-      .then((result) => {
-        console.log(result.user);
-      })
-      .catch((err) => toast.error(err));
+      .then((result) => {})
+      .catch((err) => toast.error(err.message));
   };
   const handleGithubLogin = () => {
     githubLogin(githubSignInAuthProvider)
-      .then((result) => {
-        console.log(result.user);
-      })
-      .catch((err) => toast.error(err.messages));
+      .then((result) => {})
+      .catch((err) => toast.error(err.message));
   };
   const handleSignOut = () => {
     logOut()
       .then(() => {
         toast.success("signout successfull");
       })
-      .catch((err) => toast.error(err.messages));
+      .catch((err) => toast.error(err.message));
   };
   return (
     <Disclosure as="nav" className="bg-gray-800">

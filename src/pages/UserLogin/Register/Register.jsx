@@ -22,17 +22,13 @@ const Register = () => {
 
   const handleGoogleSignIn = () => {
     googleLogin(googleSignInAuthProvider)
-      .then((result) => {
-        console.log(result.user);
-      })
-      .catch((err) => toast.error(err));
+      .then((result) => {})
+      .catch((err) => toast.error(err.message));
   };
   const handleGithubLogin = () => {
     githubLogin(githubSignInAuthProvider)
-      .then((result) => {
-        console.log(result.user);
-      })
-      .catch((err) => toast.error(err.messages));
+      .then((result) => {})
+      .catch((err) => toast.error(err.message));
   };
   const handleRegisterUser = (e) => {
     e.preventDefault();
@@ -44,18 +40,15 @@ const Register = () => {
 
     registerWithEmailPassword(email, password)
       .then((result) => {
-        console.log(result.user);
         form.reset();
         const profile = { displayName: userName, photoURL: userPhoto };
 
         updateNamePhoto(profile)
-          .then(() => {
-            console.log("successfull photo and name");
-          })
+          .then(() => {})
           .catch((err) => toast.error(err.message));
         verifyEmail()
           .then(() => {})
-          .catch((err) => toast.error(err));
+          .catch((err) => toast.error(err.message));
         toast.success("Please Check Your inbox or spam folder");
       })
       .catch((err) => toast.error(err.message))
