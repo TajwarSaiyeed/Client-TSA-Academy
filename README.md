@@ -29,6 +29,11 @@ Course details by clicking more btn <br />
 Login and Register <br />
 Github <br />
 Google <br />
+
+
+# Dark Mode
+# Marquee Animation
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
