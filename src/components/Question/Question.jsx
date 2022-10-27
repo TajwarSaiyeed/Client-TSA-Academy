@@ -6,7 +6,7 @@ const Question = ({ question }) => {
     <div>
       <div className="card lg:card-side h-full bg-base-100 shadow-xl">
         <figure>
-          <img className="w-full h-full md:w-96 " src={img} alt="Album" />
+          <img className="w-full h-full lg:w-80" src={img} alt="Album" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
