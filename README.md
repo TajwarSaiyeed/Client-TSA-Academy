@@ -1,3 +1,14 @@
+# live site : <https://tsa-academy-abid.web.app/>
+
+# What dependencies i have added in my website
+
+ Firebase
+ React Router Dom
+ React Icons
+ Daisy UI
+ React Hot Toast
+ React To PDF
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
