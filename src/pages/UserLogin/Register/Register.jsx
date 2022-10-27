@@ -55,19 +55,19 @@ const Register = () => {
 
   return (
     <div
-      className="flex justify-center items-center min-h-screen"
-      style={{ height: "110vh" }}
+      className="flex justify-center items-center"
+      style={{ minHeight: "100vh" }}
     >
       <form
         onSubmit={handleRegisterUser}
-        className="flex flex-col justify-center items-center  p-10 gap-3 rounded-lg relative shadow bg-blue-200 w-96 lg:w-2/4"
+        className="flex flex-col justify-center items-center p-10 gap-3 rounded-lg relative shadow bg-blue-200 w-96 lg:w-2/4"
       >
         <div className="avatar placeholder absolute lg:-top-20 md:-top-20 -top-10">
           <div className="bg-neutral-focus text-neutral-content rounded-full lg:w-32 md:w-32 w-20">
             <img src={userPlaceHolder} alt="" />
           </div>
         </div>
-        <h1 className="text-2xl lg:text-5xl md:text-5xl font-bold uppercase my-4 text-white drop-shadow-md">
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl md:text-3xl  font-bold uppercase my-4 text-white drop-shadow-md">
           Please Register
         </h1>
         <input

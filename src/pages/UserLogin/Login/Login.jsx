@@ -53,15 +53,15 @@ const Login = () => {
     >
       <form
         onSubmit={handleLogIn}
-        className="flex flex-col justify-center items-center p-20 gap-3 rounded-lg relative shadow-lg bg-blue-200"
+        className="flex flex-col justify-center items-center lg:p-20 p-10 gap-3 rounded-lg relative shadow-lg bg-blue-200"
       >
         <div className="avatar placeholder absolute -top-20">
           <div className=" bg-neutral-content text-neutral-focus rounded-full shadow-lg w-32">
             <img src={userPlaceHolder} alt="" />
           </div>
         </div>
-        <h1 className="text-5xl font-bold my-4 text-white drop-shadow-md">
-          Sign in to Your Account
+        <h1 className="text-3xl lg:text-5xl md:text-4xl font-bold my-4 text-white drop-shadow-md">
+          Sign in To Your Account
         </h1>
         <input
           type="text"
