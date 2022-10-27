@@ -2,8 +2,8 @@
 
 # What dependencies i have added in my website
 
- Firebase
- React Router Dom
+ Firebase <br/>
+ React Router Dom <br/>
  React Icons
  Daisy UI
  React Hot Toast
