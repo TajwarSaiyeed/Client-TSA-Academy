@@ -3,9 +3,15 @@ import { Link, Navigate } from "react-router-dom";
 import userPlaceHolder from "../../../assets/userPlaceHolder.png";
 import { AuthProvider } from "../../../contexts/AuthContext";
 import { toast } from "react-hot-toast";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
+const googleSignInAuthProvider = new GoogleAuthProvider();
+const githubSignInAuthProvider = new GithubAuthProvider();
 const Register = () => {
   const {
+    googleLogin,
+    githubLogin,
     user,
     loader,
     setLoader,
@@ -13,6 +19,21 @@ const Register = () => {
     updateNamePhoto,
     verifyEmail,
   } = useContext(AuthProvider);
+
+  const handleGoogleSignIn = () => {
+    googleLogin(googleSignInAuthProvider)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((err) => toast.error(err));
+  };
+  const handleGithubLogin = () => {
+    githubLogin(githubSignInAuthProvider)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((err) => toast.error(err.messages));
+  };
   const handleRegisterUser = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -107,6 +128,22 @@ const Register = () => {
             Login
           </Link>
         </p>
+        <div className="flex gap-2">
+          <button
+            onClick={handleGoogleSignIn}
+            className=" rounded-md bg-gray-100 flex gap-2 w-full text-left px-4 py-2 text-sm text-gray-700 items-center"
+          >
+            <FaGoogle className="text-white bg-blue-500 p-1 rounded-full w-6 h-6" />{" "}
+            Google
+          </button>
+          <button
+            className=" rounded-md flex gap-2 w-full text-left px-4 py-2 text-sm bg-gray-100 text-gray-700 items-center"
+            onClick={handleGithubLogin}
+          >
+            <FaGithub className="text-gray-400 bg-black p-1 rounded-full w-6 h-6" />{" "}
+            Github
+          </button>
+        </div>
       </form>
     </div>
   );
